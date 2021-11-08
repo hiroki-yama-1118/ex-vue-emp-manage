@@ -89,7 +89,7 @@ export default class RegisterAdmin extends Vue {
     //console.log("registerAdminよばれた");
 
     const response = await axios.post(
-      "http://153.127.48.168:8080/ex-emp-api/insert",
+      "http://34.220.54.161:8080/ex-emp-api/insert",
       {
         name: this.lastName + " " + this.firstName,
         mailAddress: this.mailAddress,

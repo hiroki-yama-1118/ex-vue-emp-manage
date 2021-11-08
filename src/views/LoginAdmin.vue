@@ -52,8 +52,41 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import axios from "axios";
+@Component
+export default class LoginAdmin extends Vue {
+  private errorMessage = ""; //ログイン時のエラーメッセージ
+  private mailAddress = ""; //メールアドレス
+  private password = ""; //パスワード
+
+  async loginAdmin(): Promise<void> {
+    //console.log("registerAdminよばれた");
+
+    const response = await axios.post(
+      "http://34.220.54.161:8080/ex-emp-api/login",
+      {
+        mailAddress: this.mailAddress,
+        password: this.password,
+      }
+    );
+    //console.log("registerAdminよばれた２");
+    console.dir("response:" + JSON.stringify(response));
+    if (response.data.status == "success") {
+      //console.log("success:" + response.data.status);
+      this["$router"].push("/employeeList");
+    } else if (response.data.status == "error") {
+      //console.log("error" + response.data.status);
+
+      return (this.errorMessage = response.data.message);
+    }
+  }
+}
 </script>
 
-<style></style>
+<style scoped>
+.login-page {
+  width: 600px;
+}
+</style>
