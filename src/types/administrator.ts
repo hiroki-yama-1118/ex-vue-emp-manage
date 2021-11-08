@@ -1,11 +1,15 @@
 /**
- * これは管理者を表すクラスです.
+ * 管理者を表すクラスです.
  */
 export class Administrator {
   constructor(
+    // ID
     private _id: number,
+    // 名前
     private _name: string,
+    //メールアドレス
     private _mailAddress: string,
+    //パスワード
     private _password: string
   ) {}
 
