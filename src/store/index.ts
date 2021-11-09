@@ -35,26 +35,28 @@ export default new Vuex.Store({
      */
     showEmployeeList(state, payload) {
       state.totalEmployeeCount = payload.totalEmployeeCount;
+      state.employees = payload.employees;
 
-      for (const employee of payload.employees) {
-        state.employees.push(
-          new Employee(
-            employee.id,
-            employee.name,
-            employee.image,
-            employee.gender,
-            employee.hireDate,
-            employee.mailAddress,
-            employee.zipCode,
-            employee.address,
-            employee.telephone,
-            employee.salary,
-            employee.characteristics,
-            employee.dependentsCount
-          )
-        );
-      }
-      //上記のfor文は"state.employees=payload.employees" でも書き換えられる
+      //上記のfor文は以下でも書き換えられる
+      //for (const employee of payload.employees) {
+      //   state.employees.push(
+      //     new Employee(
+      //       employee.id,
+      //       employee.name,
+      //       employee.image,
+      //       employee.gender,
+      //       employee.hireDate,
+      //       employee.mailAddress,
+      //       employee.zipCode,
+      //       employee.address,
+      //       employee.telephone,
+      //       employee.salary,
+      //       employee.characteristics,
+      //       employee.dependentsCount
+      //     )
+      //   );
+      // }
+      //
     },
   }, // end mutations
   getters: {
@@ -84,7 +86,7 @@ export default new Vuex.Store({
         const newArray = [];
         for (const employee of state.employees) {
           if (employee.id == id) {
-            newArray.push(id);
+            newArray.push(employee);
           }
         }
         return newArray[0];
