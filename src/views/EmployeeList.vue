@@ -33,19 +33,19 @@ import { Employee } from "../types/employee";
 @Component
 export default class EmployeeList extends Vue {
   /**
-   * Vuex ストアのアクション経由で非同期で WebAPI から従業員一覧を取得する
+   * Vuex ストアのアクション経由で非同期で WebAPI から従業員一覧を取得する.
    */
   created(): void {
     this["$store"].dispatch("getEmployeeList");
   }
   /**
-   * 非同期で取得した Vuex ストア内の従業員数を取得し返す
+   * 非同期で取得した Vuex ストア内の従業員数を取得し返す.
    */
   get employeeCount(): number {
     return this["$store"].getters.getEmployeeCount;
   }
   /**
-   * 非同期で取得した Vuex ストア内の従業員一覧を取得し返す
+   * 非同期で取得した Vuex ストア内の従業員一覧を取得し返す.
    */
   get employees(): Array<Employee> {
     return this["$store"].getters.getEmployees;
