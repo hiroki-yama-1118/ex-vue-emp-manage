@@ -20,7 +20,7 @@ export default new Vuex.Store({
      */
     async getEmployeeList(context, payload) {
       const response = await axios.get(
-        "http://34.220.54.161:8080/ex-emp/employee/employees"
+        "http://35.86.97.127:8080/ex-emp-api/employee/employees"
       );
       console.dir("response:" + JSON.stringify(response));
       payload = response.data;
